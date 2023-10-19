@@ -15,17 +15,3 @@ console.log(result); // 421
 
 
 //原始值
-
-
-
-//声明变量
-let myName;
-let myAge;
-//初始化
-myName = "Chris";
-myAge = 37;
-
-myName;
-myAge;
-// scoobyDoo;
-

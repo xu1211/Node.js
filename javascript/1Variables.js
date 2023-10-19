@@ -3,10 +3,21 @@
  * let
  */
 
+//声明变量
+let myName;
+let myAge;
+//初始化
+myName = "Chris";
+myAge = 37;
+//使用
+myName;
+myAge;
+// scoobyDoo;
+
 
 //Number
-let myAge = 17;
-console.log(myAge)
+let youAge = 17;
+console.log(youAge)
 console.log()
 
 //String

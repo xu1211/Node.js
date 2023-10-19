@@ -3,6 +3,8 @@
 
 方法: 函数是一个对象的属性时，称之为方法
  */
+
+//0. 对象属性与方法
 var person = {
   firstName: "John",
   lastName: "Doe",
@@ -11,9 +13,12 @@ var person = {
     return this.firstName + " " + this.lastName;
   }
 };
+//访问对象属性
 console.log(person.firstName)
 console.log(person["lastName"])
+//调用对象方法
 console.log(person.fullName())
+//访问对象方法：返回字符串
 console.log(person.fullName)
 
 /**

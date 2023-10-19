@@ -1,5 +1,9 @@
 [toc]
 
+# JavaScript基础
+
+# typeScript
+
 # Node.js
 Learning Node.js
 
