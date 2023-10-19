@@ -12,12 +12,12 @@ Node.js 是 JavaScript的运行容器
 
 ## install
 下载 https://dev.nodejs.cn/download/package-manager/
+
+会安装 node.js 与 npm
+
 ```
 node -v
 ```
-### nvm 切换版本
-轻松切换 Node.js 版本，并安装新版本以尝试在出现问题时轻松回滚
-https://github.com/nvm-sh/nvm
 
 ### NPM 包管理
 随同NodeJS一起安装的包管理工具
@@ -69,3 +69,8 @@ npm install express -g   # 全局安装 安装包放在 /usr/local 下或者node
   "devDependencies": {}
 }
 ```
+
+
+### nvm 切换版本
+轻松切换 Node.js 版本，并安装新版本以尝试在出现问题时轻松回滚
+https://github.com/nvm-sh/nvm

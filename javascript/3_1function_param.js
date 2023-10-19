@@ -1,26 +1,33 @@
+//显示参数: 形式参数（形参）
 
-/* 定义函数 myFunc */
-function myFunc(theObject) {
-  //实参 mycar 和形参 theObject 指向同一个对象。
-  theObject.brand = "Toyota";
+//1. 形参不需要显式声明类型
+function myFunction(x, y) {
+    return console.log(x,y)
 }
+console.log()
 
-/*
- * 定义变量 mycar;
- * 创建并初始化一个对象;
- * 将对象的引用赋值给变量 mycar
- */
-var mycar = {
-  brand: "Honda",
-  model: "Accord",
-  year: 1998,
-};
-console.log(mycar.brand);
+//2. 实参个数 形参个数 可以不一样
+myFunction()
+myFunction(1)
+myFunction(1,2)
+myFunction(1,2,3)
+console.log()
 
-/* 将对象引用传给函数 */
-myFunc(mycar);
+//1. 默认形参: undefined
+myFunction1(1);
+function myFunction1(x, y) {
+    // if (y === undefined) {
+    //       y = 0;
+    // }
+    return console.log(x,y)
+}
+console.log()
 
-/*
- * 弹出 'Toyota',对象的属性已被修改。
- */
-console.log(mycar.brand);
+//2. 自带形参
+myFunction2(0, 2);
+myFunction2(5);
+function myFunction2(x, y = 10) {
+    // y is 10 if not passed or undefined
+    return console.log(x,y)
+}
+console.log()
