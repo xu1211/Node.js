@@ -12,7 +12,7 @@ myAge = 37;
 //使用
 myName;
 myAge;
-// scoobyDoo;
+// scoobyDoo; //未声明使用error
 
 
 //Number

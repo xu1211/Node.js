@@ -1,8 +1,28 @@
 /**
+ * 函数是在 JavaScript 中传递数据的主要方式
  * 
+1. 函数
 function functionName(parameters) {
-  do something
+  ......
 }
+
+2. 函数表达式（匿名函数）:
+object = function(parameters) {
+  ......
+};
+
+3. 构造函数:(不常用)
+object = new Function(parameters, ......)
+
+4. 箭头函数:
+(parameters) => {......}
+(parameters) => ...
+
+
+5. 自调用函数: 表达式后面紧跟 () ，则会自动调用
+(function () {
+  ......
+})();
  */
 
 

@@ -1,7 +1,13 @@
 /**
-对象: 是拥有 属性 和 方法 的数据
+object 对象: 是拥有 属性 和 方法 的数据
+   method 方法: 函数是一个对象的属性时，称之为方法
 
-方法: 函数是一个对象的属性时，称之为方法
+定义语法:
+  object = {
+    属性:
+    方法: function(){
+    }
+  }
  */
 
 //0. 对象属性与方法
@@ -22,7 +28,7 @@ console.log(person.fullName())
 console.log(person.fullName)
 
 /**
-在对象初始器中,把方法名直接赋给函数的简写语法:
+简写语法: 在对象初始器中,把方法名直接赋给函数
 var obj = {
   property(parameters…) { },
   *generator(parameters…) { },

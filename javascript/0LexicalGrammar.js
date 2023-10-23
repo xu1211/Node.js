@@ -10,7 +10,7 @@ console.log(typeof foo)
 
 //弱类型
 foo = 42; // foo 现在是一个数值
-const result = foo + "1"; // JavaScript 将 foo 强制转换为字符串，因此可以将其与另一个操作数连接起来
+const result = foo + "1"; // foo 强制转换为字符串，因此可以将其与另一个操作数连接起来
 console.log(result); // 421
 
 

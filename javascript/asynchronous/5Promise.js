@@ -1,4 +1,5 @@
 /**
+ * 异步
  * Promise 是一个 ECMAScript 6 提供的类，目的是更加优雅地书写复杂的异步任务。
  * 
 new Promise(function (resolve, reject) {
@@ -28,31 +29,31 @@ Promise 的写法
 
  */
 setTimeout(function () {
-    console.log("First");
+  console.log("First");
+  setTimeout(function () {
+    console.log("Second");
     setTimeout(function () {
-        console.log("Second");
-        setTimeout(function () {
-            console.log("Third");
-        }, 3000);
-    }, 4000);
+      console.log("Third");
+    }, 3000);
+  }, 4000);
 }, 1000);
 
 new Promise(function (resolve, reject) {
-    setTimeout(function () {
-        console.log("First");
-        resolve();
-    }, 1000);
+  setTimeout(function () {
+    console.log("First");
+    resolve();
+  }, 1000);
 }).then(function () {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            console.log("Second");
-            resolve();
-        }, 4000);
-    });
-}).then(function () {
+  return new Promise(function (resolve, reject) {
     setTimeout(function () {
-        console.log("Third");
-    }, 3000);
+      console.log("Second");
+      resolve();
+    }, 4000);
+  });
+}).then(function () {
+  setTimeout(function () {
+    console.log("Third");
+  }, 3000);
 });
 
 
@@ -67,7 +68,7 @@ const promise = new Promise((resolve, reject) => {
     }
   }, 1000);
 });
- 
+
 promise.then(result => {
   console.log(result);
 }).catch(error => {
