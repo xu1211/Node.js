@@ -1,4 +1,9 @@
 [toc]
+
+参考: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
+
+带有[]的表示有code demo
+
 # LexicalGrammar 词汇语法
 作用：解释 JavaScript 源文本
 - 解释器流程
@@ -75,7 +80,7 @@ await
 enum
 arguments （不是关键字，但在严格模式下不能声明为标识符）
 
-# 字面量/常量
+## 字面量/常量
 - 空字面量
 null
 
@@ -120,7 +125,7 @@ tag`string text ${expression} string text`
 ```
 
 
-# [变量]
+## [变量]
 - [变量demo](./1Variables.js)
 - var 与 let 的区别
 - let 和 const (ES6)
@@ -128,7 +133,7 @@ const 关键字来定义一个常量，
 let 关键字定义的限定范围内作用域的变量
 
 
-# 表达式和运算符
+## 表达式和运算符
 
 - []
 数组初始化/字面量语法。
@@ -226,15 +231,79 @@ object 对象: 是拥有 属性 和 方法 的数据
 
 JavaScript 中，对象是唯一**可变的值**
 
-- 对象属性
-属性=键值对
-创建 会自动初始化一组有限的属性；这些属性还可以被添加和移除。
-有两种对象属性的类型：数据属性和访问器属性
-数据属性：key与value关联
-访问器属性：key与get() set()关联
-- [对象方法 demo](./2Object_Method.js)
+### 对象属性
+- 属性=键值对
+- 创建 会自动初始化一组有限的属性；这些属性还可以被添加和移除。
+- 有两种对象属性的类型：数据属性和访问器属性
+  1. 数据属性：key与value关联
+  2. 访问器属性：key与get() set()关联
+
+### 对象方法
+[对象方法 demo](./2Object_Method.js)
+
+### 标准内置对象 (standard built-in objects)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+
+#### value
+globalThis
+Infinity
+NaN
+undefined
+#### Function
+eval()
+isFinite()
+isNaN()
+parseFloat()
+parseInt()
+decodeURI()
+decodeURIComponent()
+encodeURI()
+encodeURIComponent()
+#### Fundamental 基本对象
+Object
+Function
+Boolean
+Symbol
+#### Error 错误对象
+#### Numbers and dates  数字和日期
+Number
+BigInt
+Math
+Date
+#### Text processing  文本处理
+String
+RegExp
+#### Indexed collections  索引集合
+Array
+Int8Array
+Uint8Array
+Uint8ClampedArray
+Int16Array
+Uint16Array
+Int32Array
+Uint32Array
+BigInt64Array
+BigUint64Array
+Float32Array
+Float64Array
+#### Keyed collections  键集合
+Map
+Set
+WeakMap
+WeakSet
+
+#### Structured data  结构化数据
+ArrayBuffer
+SharedArrayBuffer
+DataView
+Atomics
+JSON
+#### Reflection  反射
+Reflect
+Proxy
 
 ### 全局对象（Global Object）
+指的是全局范围内的对象。可以在全局作用域中使用 this 操作符访问
 全局对象是全局变量的宿主
 - `__filename`
 当前正在执行的脚本的文件名
@@ -250,7 +319,7 @@ JavaScript 中，对象是唯一**可变的值**
 在指定的毫秒(ms)数后执行指定函数(cb), 一直执行
 - `clearInterval(t) `
 停止setInterval() 创建的定时器
-### Function对象
+
 
 # [function 函数]
 [function demo](./3_0function.js)
@@ -302,4 +371,35 @@ function* [name]([param] [, param] [..., param]) { statements }
 - [继承]()
 
 # 异步
+## callback 回调
+>原始的异步函数实现方式
 
+是一个被传递到另一个函数中的会在适当的时候被调用的函数
+## Promises (ES6) 
+>现代 JavaScript 中异步编程的基础
+
+Promises 表示异步操作最终完成或失败的对象
+  有三种状态：pending（进行中）、fulfilled（已成功）、rejected（已失败）
+```js
+new Promise(function (resolve, reject) {
+  // do...
+});
+```
+## Async and Await 同步,等待 (ES2017)
+>简化使用基于promise的API的异步语法
+
+```js
+//每次调用async函数时，它都会返回一个新的 Promise
+async function name(param) {
+  statements
+  //可以使用 await 机制
+  await expression
+  //Await表达式通过挂起执行直到返回的promise被实现或拒绝
+}
+```
+
+
+- Timers  定时器
+setTimeout 和 setInterval 安排未来的函数
+- Closures  关闭
+- Event Loop  事件循环

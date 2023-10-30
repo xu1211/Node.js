@@ -1,4 +1,3 @@
-
 /**
  * Object Types 对象类型
   Array
@@ -8,7 +7,7 @@
   Class
  */
 
-//Array
+//Array: type[]
 {
   // 在元素类型后面加上[]
   let arr1: number[] = [1, 2];
@@ -17,7 +16,8 @@
   let arr2: Array<number> = [1, 2];
   //arr2[0] = "string"  // 报错
 }
-//Tuple
+
+//Tuple: []
 {
   let x: [string, number];
   x = ['Runoob', 1];    // 运行正常
@@ -25,6 +25,28 @@
   console.log(x[0]);    // 输出 Runoob
 }
 
+//object: {}
+{
+  const obj = {
+    property1: 1,
+    property2: 2
+  };
+}
+
+//interface
+{
+  interface Point {
+    x: number;
+    y: number;
+  }
+
+  function printCoord(pt: Point) {
+    console.log("The coordinate's x value is " + pt.x);
+    console.log("The coordinate's y value is " + pt.y);
+  }
+
+  printCoord({ x: 100, y: 100 });
+}
 
 /**
  * 其他类型

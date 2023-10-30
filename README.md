@@ -5,8 +5,10 @@ Node.js的核心是基于V8引擎的JavaScript运行时, 本身只能直接运�
 学习node.js前, 先要了解一些JavaScript基础内容
 
 ## [JavaScript 必学]
-[JavaScript demo](./javascript/js.md)
-大纲:
+
+官方文档:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
+
+[大纲](./javascript/js.md):
 - LexicalGrammar 词汇语法
   - Variables 变量
   - Expression 表达式
@@ -27,9 +29,22 @@ Node.js的核心是基于V8引擎的JavaScript运行时, 本身只能直接运�
 - Strict Mode  严格模式
 - Asynchronous 异步
   - callback 回调
-  - Promises  承诺
-  - Async and Await 同步,等待
+  - Promises  承诺 (ES6) 
+  ```
+  ```
+  - Async and Await 同步,等待 (ES2017)
+  简化使用基于promise的API所需的语法
+    ```js
+    //每次调用函数时，它都会返回一个新的 Promise
+    async function name(param) {
+      statements
+      //可以使用 await 机制
+      await expression
+      //Await表达式通过挂起执行直到返回的promise被实现或拒绝
+    }
+    ```
   - Timers  定时器
+  setTimeout 和 setInterval 安排未来的函数
   - Closures  关闭
   - Event Loop  事件循环
 

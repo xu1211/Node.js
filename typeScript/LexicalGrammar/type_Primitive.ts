@@ -38,3 +38,9 @@ I'll be ${age + 1} years old next month.`;
   let flag: boolean = true;
 }
 
+// 后缀! :值不是 null 或 undefined
+function liveDangerously(x?: number | null) {
+  console.log(x!.toFixed());
+}
+liveDangerously(1)
+liveDangerously()
