@@ -1,5 +1,7 @@
 [toc]
 
+---
+
 参考: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
 
 带有[]的表示有code demo
@@ -126,11 +128,24 @@ tag`string text ${expression} string text`
 
 
 ## [变量]
+var 变量
+let 变量
+const 常量
 - [变量demo](./1Variables.js)
 - var 与 let 的区别
 - let 和 const (ES6)
 const 关键字来定义一个常量，
 let 关键字定义的限定范围内作用域的变量
+
+## Scope 作用域
+
+- Function scope 函数作用域 和 Global scope 全局作用域
+var 在函数内声明变量, 是函数作用域
+var 在函数外声明变量, 全局作用域
+
+- Module scope 模块作用域 
+- Block scope 块作用域 (ES6引入)
+使用 let 或 const 声明变量
 
 
 ## 表达式和运算符
@@ -364,6 +379,12 @@ function* name([param[, param[, ...param]]]) { statements }
 ```
 function* [name]([param] [, param] [..., param]) { statements }
 ```
+
+## 闭包
+在function执行完后, 让变量依然存在, 不被回收, 可被其他function使用
+
+https://www.bilibili.com/video/BV1eh4y1i7yp/?spm_id_from=333.880.my_history.page.click&vd_source=60d40ab95cc774790f4ac09759b8a7b6
+
 # [class 类]
 [class demo](./4_0classes.js)
 - 属性
@@ -371,12 +392,35 @@ function* [name]([param] [, param] [..., param]) { statements }
 - [继承]()
 
 # 异步
-## callback 回调
+
+
+## [callback 回调]
 >原始的异步函数实现方式
 
-是一个被传递到另一个函数中的会在适当的时候被调用的函数
-## Promises (ES6) 
->现代 JavaScript 中异步编程的基础
+回调是一个简单的函数，它作为一个值传递给另一个函数，并且只在事件发生时执行
+```js
+//callback作为参数传递给doSomething
+function doSomething(callback) {
+  // 执行某些操作
+  callback(); // 调用回调函数
+}
+
+// 1.将回调函数作为参数传递给doSomething函数
+function callback() {
+}
+doSomething(callback); 
+
+// 2.匿名函数
+doSomething(function() {
+});
+
+// 3.箭头函数
+doSomething(() => {
+});
+```
+
+## [Promises]
+>ES6, 现代 JavaScript 中异步编程的基础
 
 Promises 表示异步操作最终完成或失败的对象
   有三种状态：pending（进行中）、fulfilled（已成功）、rejected（已失败）
@@ -385,21 +429,58 @@ new Promise(function (resolve, reject) {
   // do...
 });
 ```
-## Async and Await 同步,等待 (ES2017)
->简化使用基于promise的API的异步语法
+- new Promise().then()
+- new Promise().catch()
+- Promise.all()
+## [Async and Await] 同步,等待
+>ES2017, 简化使用基于promise的API的异步语法
 
 ```js
 //每次调用async函数时，它都会返回一个新的 Promise
 async function name(param) {
   statements
   //可以使用 await 机制
+  //挂起执行直到返回的promise被实现或拒绝, 强制异步操作以串联的方式完成
   await expression
-  //Await表达式通过挂起执行直到返回的promise被实现或拒绝
 }
 ```
 
 
-- Timers  定时器
-setTimeout 和 setInterval 安排未来的函数
-- Closures  关闭
-- Event Loop  事件循环
+
+# 运行时
+![Alt text](RuntimeConcepts.png)
+- Stack 栈
+先进后出, 从上到下执行 frame
+调用一个函数, 会创建函数的 frame. 包含对函数的参数和局部变量的引用
+子函数将创建第二个frame并将其推送到第一个frame的顶部
+- Heap: 堆
+建函数的frame时, 它的参数和局部变量会存储在Heap
+- Queue: 队列
+先进先出
+每条消息都有一个关联的函数，Event Loop调用该函数,创建frame 来处理该消息。
+
+
+## workers 多线程
+单独线程 运行一些任务。
+```ts
+//创建 worker，这些代码就会运行
+const worker = new Worker("./generate.js");
+```
+## Event Loop  事件循环
+JavaScript 有一个基于事件循环的运行时模型，它负责执行代码、收集和处理事件以及执行排队的子任务。
+
+- "Run-to-completion" “运行至完成”
+函数运行时，它都不能被抢占
+
+- Adding messages 添加消息
+Web 浏览器 > 事件监听器 > 添加消息 > 执行函数
+
+- Zero delays 零延误
+因为“运行至完成”, 所以 `setTimeout(0)` 不一定立刻执行
+需要等前面的Queue 执行完成
+
+- Never blocking  永不阻塞
+异步io, 期间不阻塞, 完成后触发io回调事件
+
+- Several runtimes communicating together 多个运行时一起通信
+Web Worker 或跨域 iframe 有自己的堆栈、堆和消息队列。两个不同的运行时只能通过 postMessage 方法发送消息来进行通信。如果另一个运行时侦听 message 事件，则此方法会向另一个运行时添加一条消息。

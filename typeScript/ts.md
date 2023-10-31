@@ -26,7 +26,12 @@ tsc hello.ts  # 编译会生成hello.js
 node hello.js
 ```
 
+### ts-node模块 直接运行ts
+```
+npm install -g ts-node
 
+ts-node xxx.ts
+```
 
 ### tsconfig.json配置文件
 - 生成一个 tsconfig.json 文件
@@ -53,7 +58,8 @@ tsc命令时，会根据tsconfig.json文件中的配置选项来编译TypeScript
 
 
 ## Data Types
-
+>值或对象的声明 与 类型 没有一对一
+类型只是集合, 一个特定的值可以同时属于多个集合。
 ### Primitive Types 原始类型
 不是对象的数据，==没有方法或属性==
 - string

@@ -73,12 +73,12 @@
   obj.bar = 100;  //访问它的任何属性
   obj = "hello";  //赋其他值
   const n: number = obj;  //付给其他值
-  obj.foo();      //调用方法
-  obj();          //调用函数
+  //obj.foo();      //调用方法  (编译不报错,执行报错)
+  //obj();          //调用函数  (编译不报错,执行报错)
 }
 //void
 {
   function hello(): void {
-    alert("Hello Runoob");
+    console.log("Hello Runoob");
   }
 }

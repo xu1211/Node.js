@@ -2,11 +2,28 @@
  * 异步
  * Promise 是一个 ECMAScript 6 提供的类，目的是更加优雅地书写复杂的异步任务。
  * 
-new Promise(function (resolve, reject) {
-    // do something...
-});
  */
 
+/**
+ * 0. Promise() 构造器
+ * 有些函数本身就是异步的返回 Promise<any>,不需要额外处理; 
+ * 要把一个普通的同步函数改成异步需要用 Promise() 构造器
+ * Promise() 构造器: 使用单个函数作为参数, 返回 Promise<any>
+ *
+  new Promise(function (resolve, reject) {
+    // do something...
+  });
+  异步函数执行成功，就调用 resolve，
+  如果执行失败，就调用 reject
+ */
+{
+  new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      console.log("First");
+      resolve();
+    }, 1000);
+  })
+}
 
 /**
 1. then() 

@@ -24,52 +24,72 @@ Node.js的核心是基于V8引擎的JavaScript运行时, 本身只能直接运�
     - Method 方法
     - this 操作
 - Function 函数
+  >没有强制所有功能和数据保存在class类中
+  函数可以存在于任何地方，数据可以自由传递
   - Arrow Functions  箭头函数
+  - Closures 闭包
+  - setTimeout()
 - Class 类
-- Strict Mode  严格模式
+  - 构造函数
+  - 字段
+  - 静态方法、getter、setter方法
+  - Public or private
+  - 基于原型链的继承
 - Asynchronous 异步
   - callback 回调
   - Promises  承诺 (ES6) 
-  ```
-  ```
   - Async and Await 同步,等待 (ES2017)
-  简化使用基于promise的API所需的语法
-    ```js
-    //每次调用函数时，它都会返回一个新的 Promise
-    async function name(param) {
-      statements
-      //可以使用 await 机制
-      await expression
-      //Await表达式通过挂起执行直到返回的promise被实现或拒绝
-    }
-    ```
-  - Timers  定时器
-  setTimeout 和 setInterval 安排未来的函数
-  - Closures  关闭
+- 运行时
+  - wokers 多线程
   - Event Loop  事件循环
+- Strict Mode  严格模式
 
 ## TypeScript
 是JavaScript的超集, TypeScript代码可以转换成JavaScript代码在Node.js或浏览器中运行
-增加了静态类型定义,声明我们期望的参数类型以及在函数中返回的确切内容
+变成了强类型语言: 增加了静态类型定义,声明我们期望的参数类型以及在函数中返回的确切内容
 
 先了解 JavaScript 的运行时行为, 再根据大纲补充学习
 大纲:
 - 类型
-  >值或对象的声明 与 类型 没有一对一
-  类型只是集合, 一个特定的值可以同时属于多个集合。
+  ts比js增加了一些类型
+  - Primitive Types 原始类型
+  - object Types 对象类型
+    - Tuple Types
+    - map
+    - enum 枚举
+    - Any Types
+    - Interface Types
+    - Union Types 联合类型
+    - Intersection Types 交叉类型
+  - 特别类型
+    - void
+    - never
+  - 类型别名
+- 类型操作
+  - 静态类型定义
+  强定义 变量类型, function返回类型
   - 类型批注和编译时类型检查
-  - 类型推断 `值 as 类型`
+  在编译期间可以检测和修复错误
+  - 类型推断 
+  `值 as 类型`
   - 类型擦除
-  - enum 枚举
-  - map
-  - Mixin
-- OOP 面向对象
-  >没有强制所有功能和数据保存在class类中
-  函数可以存在于任何地方，数据可以自由传递
-  - 接口
-  - 类
-  - 模块
-- 泛型编程
+  - 类型缩小, 类型转换
+
+- function
+  - 重载
+  - 可选参数
+- 接口
+- 类
+  - 基于类的继承
+- 泛型
+  - 泛型函数
+  - 泛型接口
+
+- 模块
+  - import
+  - export
+- namespace
+- tsconfig.json 项目配置
 # Node.js
 Learning Node.js
 
@@ -122,11 +142,12 @@ npm uninstall <Module Name>
 //发布
 npm publish
 ```
-全局安装、本地安装
+- 全局安装、本地安装
 ```
 npm install express      # 本地安装 安装包放在 ./node_modules 下
 npm install express -g   # 全局安装 安装包放在 /usr/local 下或者node的安装目录
 ```
+- npx 临时安装
 ### package.json 
 位于模块的目录下，用于定义包的属性
 ```json
@@ -188,6 +209,8 @@ node -e "console.log(123)"
 ```
 ## Asynchronous 异步
 
+- Timers  定时器
+setTimeout 和 setInterval 安排未来的函数
 ### Blocking vs Non-Blocking
 Node.js标准库中的所有I/O方法都提供异步版本，这些方法是非阻塞的，并接受回调函数。
 一些方法也有阻塞的对应方法，它们的名称以 Sync 结尾。
@@ -223,35 +246,6 @@ fs.readFile('/file.md', (readFileErr, data) => {
 });
 ```
 ### Callbacks 回调
-回调是一个简单的函数，它作为一个值传递给另一个函数，并且只在事件发生时执行
-- 语法
-```js
-
-//callback作为参数传递给doSomething
-function doSomething(callback) {
-  // 执行某些操作
-  callback(); // 调用回调函数
-}
-
-// 1.将回调函数作为参数传递给doSomething函数
-function callback() {
-}
-doSomething(callback); 
-
-// 2.匿名函数
-doSomething(function() {
-});
-
-// 3.箭头函数
-doSomething(() => {
-});
-```
-- 案例
-```js
-setTimeout(() => {
-  // runs after 2 seconds
-}, 2000);
-```
 
 你如何处理回调的错误？一个非常常见的策略是使用Node.js所采用的：任何回调函数中的第一个参数都是error对象：错误优先回调
 ```js
@@ -280,7 +274,7 @@ setImmediate(() => {
 ## module
 一个 Node.js 文件就是一个模块
 
-### 加载module
+### require() 加载module
 - require 引入模块
 
 
@@ -408,4 +402,4 @@ node
 ```
 
 
-
+# typeScritp-Node 项目
