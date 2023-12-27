@@ -48,10 +48,10 @@ Node.js的核心是基于V8引擎的JavaScript运行时, 本身只能直接运�
 是JavaScript的超集, TypeScript代码可以转换成JavaScript代码在Node.js或浏览器中运行
 变成了强类型语言: 增加了静态类型定义,声明我们期望的参数类型以及在函数中返回的确切内容
 
-先了解 JavaScript 的运行时行为, 再根据大纲补充学习
+先了解 JavaScript 的运行时行为, 再补充学习
 大纲:
 - 类型
-  ts比js增加了一些类型
+ts比js增加了一些类型
   - Primitive Types 原始类型
   - object Types 对象类型
     - Tuple Types
@@ -71,16 +71,19 @@ Node.js的核心是基于V8引擎的JavaScript运行时, 本身只能直接运�
   - 类型批注和编译时类型检查
   在编译期间可以检测和修复错误
   - 类型推断 
-  `值 as 类型`
+  `值 as 类型` 编译时被删除,不会产生异常或null
   - 类型擦除
   - 类型缩小, 类型转换
-
 - function
   - 重载
   - 可选参数
-- 接口
-- 类
-  - 基于类的继承
+- interface 接口
+属性, 抽象方法
+  - extends 继承,多继承
+- class 类
+属性和方法
+  - extends 基于类的继承
+  - 重写
 - 泛型
   - 泛型函数
   - 泛型接口
@@ -194,10 +197,10 @@ npm run <task-name>
 }
 ```
 
+## NPX
 
 
-
-## node 命令
+## node cli 命令行
 - 启动应用
 ```
 node app.js

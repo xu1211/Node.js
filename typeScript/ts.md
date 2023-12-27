@@ -14,7 +14,7 @@ tsc -v
 ## [tsc 编译器]
 `tsc` 获取TypeScript代码并将其编译为JavaScript
 
-[demo](./helloword/)
+[demo](compile_helloword/)
 
 1. 创建文件 `hello.ts`
 2. 编译
@@ -74,18 +74,18 @@ tsc命令时，会根据tsconfig.json文件中的配置选项来编译TypeScript
 ### object Types 对象类型
 泛指所有的非原始类型，任何==带有属性的值==
 与空对象类型 { } 不同, 与全局类型 Object 不同
-- Array Types
+#### Array Types
 相同类型,不固定长度
 ```ts
 number[]
 string[]
 ```
-- Tuple Types
+#### Tuple Types
 不同类型,固定长度
 ```ts
 [string, number]
 ```
--  类型别名
+####  类型别名
 创建后无法更改属性
 ```ts
 type Person = {
@@ -93,7 +93,7 @@ type Person = {
   age: number;
 };
 ```
-- Interface Types
+#### Interface Types
 可扩展新属性
 ```ts
 interface Person {
@@ -108,7 +108,7 @@ interface Women extends Person {
   married: boolean;
 }
 ```
-- Function Types
+#### Function Types
 输入输出做限制，也就是有参数和返回值。
 全局类型 Function 描述了 bind、call、apply 等属性
 ```ts
@@ -116,7 +116,7 @@ function paintShape(parameter: parameterType): returnType {
   // ...
 }
 ```
-- Class Types
+#### Class Types
 有方法
 ```ts
 class Person {
@@ -127,16 +127,16 @@ class Person {
   }
 }
 ```
-- Enum Types
-- Any Types
+#### Enum Types
+#### Any Types
 
 
-- Union Types 联合类型
+#### Union Types 联合类型
 ```ts
 //表示可能是这些类型中的任何一种的值
 TYPE1 | TYPE2 | TYPE3
 ```
-- Intersection Types 交叉类型
+#### Intersection Types 交叉类型
 ```ts
 TYPE1 & TYPE2 
 ```
@@ -168,7 +168,7 @@ function identity<Type>(arg: Type): Type {
   return arg;
 }
 ```
-- 方式1: <>显式传递类型
+- 方式1: <> 显式传递类型
 ```ts
 let output = identity<string>("myString");
 ```
@@ -240,6 +240,11 @@ private
 - static
 
 - abstract 抽象
+
+### type和interface
+type和interface在某些方面有相似的功能,
+1. 需要描述对象的形状或者实现类似于鸭子类型（duck typing）的灵活性时，使用接口更合适
+2. 需要创建复杂的联合类型、交叉类型或者为现有类型创建别名时，使用类型别名更合适
 
 ### 模块
 任何包含顶层 import 或 export 的文件都被视为一个==模块==。
