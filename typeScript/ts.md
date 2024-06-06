@@ -2,6 +2,7 @@
 [toc]
 
 ## install
+安装 TypeScript 编译器
 ```bash
 # 全局安装
 npm install -g typescript
@@ -17,29 +18,24 @@ tsc -v
 [demo](compile_helloword/)
 
 1. 创建文件 `hello.ts`
-2. 编译
+2. 编译成js
 ```bash
 tsc hello.ts  # 编译会生成hello.js
 ```
-3. 运行
+3. 运行js
 ```
 node hello.js
 ```
 
-### ts-node模块 直接运行ts
-```
-npm install -g ts-node
-
-ts-node xxx.ts
-```
 
 ### tsconfig.json配置文件
+ypeScript 编译器会应用默认行为。 但你可以通过将 tsconfig.json 文件添加到 TypeScript 项目文件夹的根目录来修改 TypeScript 编译器选项
+tsc命令时，会根据tsconfig.json文件中的配置选项来编译TypeScript代码
+
 - 生成一个 tsconfig.json 文件
 ```
 tsc --init
 ```
-tsc命令时，会根据tsconfig.json文件中的配置选项来编译TypeScript代码
-
 项目的根目录中创建一个名为tsconfig.json的文件，并添加以下内容：
 ```
 {
@@ -56,6 +52,12 @@ tsc命令时，会根据tsconfig.json文件中的配置选项来编译TypeScript
 ```
 这个配置文件指定了TypeScript编译器的选项，以及要包含和排除的文件。
 
+### ts-node模块 直接运行ts
+```
+npm install -g ts-node
+
+ts-node xxx.ts
+```
 
 ## Data Types
 >值或对象的声明 与 类型 没有一对一
@@ -241,10 +243,27 @@ private
 
 - abstract 抽象
 
-### type和interface
+### 定义参数类型: type,interface,class
 type和interface在某些方面有相似的功能,
 1. 需要描述对象的形状或者实现类似于鸭子类型（duck typing）的灵活性时，使用接口更合适
 2. 需要创建复杂的联合类型、交叉类型或者为现有类型创建别名时，使用类型别名更合适
+
+>如果你只需要描述对象的形状,使用 interface 是最合适的。
+如果你需要更复杂的类型定义,使用 type 别名会更灵活。
+如果你需要包含方法或其他行为,使用 class 定义会更合适。
+
+- Interface:
+使用 interface 定义输入和输出参数类型是最常见的做法。
+interface 是一种描述对象结构的方式,可以轻松地扩展和重用类型定义。
+当你需要描述一个对象的形状时,interface 通常是最合适的选择。
+- Type Alias (type):
+当你需要更复杂的类型定义时,如联合类型、交叉类型或元组类型,使用 type 别名会更合适。
+type 别名可以用于任何类型,包括原始类型、联合类型和交叉类型。
+如果你需要动态地组合类型,type 会更加灵活。
+- Class:
+如果你需要在类型定义中包含方法或其他行为,使用 class 定义会更合适。
+当你需要创建可实例化的对象时,使用 class 会更有意义。
+如果你的类型定义需要继承或有更复杂的行为,使用 class 会更合适。
 
 ### 模块
 任何包含顶层 import 或 export 的文件都被视为一个==模块==。
