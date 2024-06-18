@@ -168,6 +168,8 @@ Learning Node.js
 一个node.js只用一个cpu，单线程
 通过使用事件驱动和非阻塞 I/O 模型来实现异步操作
 
+>Node 是在 2009 年设计的，当时 JavaScript 是一种截然不同的语言。出于必要，Node 必须发明一些概念，这些概念后来被标准组织采用并以不同的方式添加到js语言中。
+
 - install
 - NPM 包管理器
 - NPX 包执行器
